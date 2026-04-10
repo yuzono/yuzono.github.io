@@ -17,7 +17,7 @@
     "@iconify-prerendered/vue-mdi": "^0.23.1702456985",
     "@tanstack/vue-query": "^5.17.19",
     "@vueuse/core": "^10.7.2",
-    "axios": "^1.13.5",
+    "axios": "^1.15.0",
     "element-plus": "^2.11.1",
     "lodash.groupby": "^4.6.0",
     "markdown-it-shortcode-tag": "^1.1.0",
@@ -35,7 +35,7 @@
     "@types/markdown-it": "^13.0.7",
     "@types/node": "^20.11.5",
     "stylus": "^0.62.0",
-    "vite": "^6.4.2",
+    "vite": "^7.3.2",
     "vitepress": "1.0.0-rc.39",
     "vitepress-plugin-tabs": "^0.5.0",
     "vue": "^3.4.15"
