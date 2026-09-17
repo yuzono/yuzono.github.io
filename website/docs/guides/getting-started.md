@@ -2,37 +2,35 @@
 # SPDX-License-Identifier: Apache-2.0
 title: Getting started
 titleTemplate: Guides
-description: Essential information to help you set up the extension repo.
+description: Essential information to help you set up the extension store.
 ---
 
 <script setup lang="ts">
     import AddRepoButton from "../../.vitepress/theme/components/AddRepoButton.vue";
+    import { GITHUB_EXTENSION_REPO, GITHUB_EXTENSION_PB } from "../../.vitepress/config/constants";
     import AddRepoButtonAni from "../../.vitepress/theme/components/AddRepoButtonAni.vue";
-    import { GITHUB_EXTENSION_REPO, GITHUB_EXTENSION_MIN_JSON } from "../../.vitepress/config/constants";
     import { GITHUB_EXTENSION_REPO_ANI, GITHUB_EXTENSION_MIN_JSON_ANI } from "../../.vitepress/config/constants";
 </script>
 
 # Getting started
-Essential information to help you set up the extension repo.
+Essential information to help you set up the extension store.
 
-## Adding the extension repo
+## Adding the extension store
 ### Before you start
 Uninstall all existing extensions. You will not get extension updates otherwise.
 
-### Adding the repository
-For all modern variants of Mihon (Komikku, TachiyomiSY, Yokai, TachiyomiJ2K, TachiyomiAZ),
-
-Or all modern variants of Aniyomi (Anikku, Animiru, Animetail),
-
-Click the button below to add the repository:
+### Adding the store
+For all modern variants of Mihon (TachiyomiSY, Komikku),
+Or all modern variants of Aniyomi (Anikku, Animiru),
+click the button below to add the store:
 
 <AddRepoButton />
 <AddRepoButtonAni />
 
-::: details Adding the repo manually
+::: details Adding the store manually
 - Go to <nav to="extension-repos">
 - Select "Add" at the bottom of your screen.
-- Enter <a :href="GITHUB_EXTENSION_MIN_JSON">{{ GITHUB_EXTENSION_MIN_JSON }}</a> for Mihon variants.
+- Enter <a :href="GITHUB_EXTENSION_PB">{{ GITHUB_EXTENSION_PB }}</a> for Mihon variants.
 - Enter <a :href="GITHUB_EXTENSION_MIN_JSON_ANI">{{ GITHUB_EXTENSION_MIN_JSON_ANI }}</a> for Aniyomi variants.
 :::
 

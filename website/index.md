@@ -4,12 +4,12 @@
 layout: "home"
 
 title: "Yūzōnō"
-description: "Extension repository for Mihon, Aniyomi and variants."
+description: "Extension store for Mihon/Komikku, Aniyomi/Anikku and variants."
 
 hero:
   name: "Yūzōnō"
   text: ""
-  tagline: "Extension repository for Mihon, Aniyomi and variants"
+  tagline: "Extension store for Mihon/Komikku, Aniyomi/Anikku and variants."
   actions:
     - theme: "brand"
       text: "Get started"
@@ -39,4 +39,16 @@ features:
     linkText: "Get started"
 ---
 
+<div class="home-content">
 
+::: warning :warning: Extension list says my app is outdated
+If you are seeing an empty extension list with the message "Outdated app" or all extensions showing as obsolete, it means that your app is no longer compatible with our extensions.
+
+Keiyoushi only supports the following Android apps, anything else isn't supported so if it doesn't work, you are on your own:
+
+Mihon, TachiyomiSY and Komikku.
+
+# **Make sure your app is updated to the latest version!**
+
+:::
+</div>

@@ -9,12 +9,12 @@ import { imgSize } from '@mdit/plugin-img-size';
 import { include } from '@mdit/plugin-include';
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs';
 import shortcodePlugin from 'markdown-it-shortcode-tag';
-import shortcodes from './config/shortcodes';
+import shortcodes from './config/shortcodes.ts';
 import ElementPlus from 'unplugin-element-plus/vite';
 
-import generateMeta from './config/hooks/generateMeta';
-import nav from './config/navigation/nav';
-import sidebar from './config/navigation/sidebar';
+import generateMeta from './config/hooks/generateMeta.ts';
+import nav from './config/navigation/nav.ts';
+import sidebar from './config/navigation/sidebar.ts';
 
 const env = loadEnv('', process.cwd());
 const hostname: string = env.VITE_HOSTNAME || 'http://localhost:4173';
@@ -22,7 +22,7 @@ const hostname: string = env.VITE_HOSTNAME || 'http://localhost:4173';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Yūzōnō",
-  description: "An unofficial repository of extensions for Mihon, Aniyomi and variants.",
+  description: "An extension store for Mihon/Komikku, Aniyomi/Anikku and variants.",
   cleanUrls: true,
   transformHead: (context) => {
     context.head.push(['meta', { name: 'robots', content: 'noindex, nofollow' }]);

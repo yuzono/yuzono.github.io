@@ -4,8 +4,11 @@
 -->
 
 <script setup lang="ts">
-import { GITHUB_EXTENSION_MIN_JSON } from "../../config/constants";
+import { GITHUB_EXTENSION_PB } from "../../config/constants";
 import { onMounted, ref } from "vue";
+import useMihonVersionQuery from "../queries/useMihonVersionQuery";
+
+const { data: mihonVersion } = useMihonVersionQuery();
 
 const isAndroid = ref(true);
 
@@ -16,7 +19,7 @@ onMounted(() => {
 function handleAnalytics() {
   window.goatcounter?.count?.({
     path: "/#add-to-tachiyomi",
-    title: "Add extension repository",
+    title: "Add extension store",
   });
 }
 </script>
@@ -30,22 +33,23 @@ function handleAnalytics() {
       <p>
         <strong>Mihon</strong> is an <strong>Android app</strong> only.
         Use an <strong>Android device with Mihon installed</strong> to
-        add this extension repo.
+        add this extension store.
       </p>
     </div>
   </div>
-  <div v-else>
+  <div>
     <div class="action-buttons">
       <a
-        class="action-button primary"
-        :href="`tachiyomi://add-repo?url=${encodeURIComponent(GITHUB_EXTENSION_MIN_JSON)}`"
+        class="action-button"
+        :class="!!isAndroid ? 'primary' : 'secondary'"
+        :href="`mihon://extension-store?url=${encodeURIComponent(GITHUB_EXTENSION_PB)}`"
         @click="handleAnalytics"
       >
-        <span class="text">Add Manga repository</span>
+        <span class="text">Add Manga store</span>
       </a>
     </div>
     <span class="version-disclaimer">
-      Requires <strong>Tachiyomi 0.15.2</strong> or newer.
+      Requires <strong>Mihon {{ mihonVersion }}</strong> or newer.
     </span>
   </div>
 </template>

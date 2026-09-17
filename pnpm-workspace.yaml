@@ -1,0 +1,7 @@
+allowBuilds:
+  esbuild: false
+  vue-demi: false
+peerDependencyRules:
+  ignoreMissing:
+    - '@algolia/client-search'
+    - search-insights

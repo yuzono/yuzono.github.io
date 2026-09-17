@@ -6,6 +6,10 @@ import type { HeadConfig, TransformContext } from 'vitepress'
 function generateMeta(context: TransformContext, hostname: string) {
   const head: HeadConfig[] = []
   const { pageData } = context
+  const stringValue = (value: unknown) =>
+    typeof value === 'string' || typeof value === 'number' ? String(value) : undefined
+  const customTitle = stringValue(pageData.frontmatter.customMetaTitle)
+  const title = customTitle || stringValue(pageData.frontmatter.title) || pageData.title
 
   const url = `${hostname}/${pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2')}`
 
@@ -14,32 +18,34 @@ function generateMeta(context: TransformContext, hostname: string) {
   head.push(['meta', { name: 'twitter:url', content: url }])
   // head.push(['meta', { name: 'twitter:card', content: 'summary_large_image' }])
 
-  if (pageData.frontmatter.theme)
-    head.push(['meta', { name: 'theme-color', content: pageData.frontmatter.theme }])
+  const theme = stringValue(pageData.frontmatter.theme)
+  if (theme)
+    head.push(['meta', { name: 'theme-color', content: theme }])
 
-  if (pageData.frontmatter.type)
-    head.push(['meta', { property: 'og:type', content: pageData.frontmatter.type }])
+  const type = stringValue(pageData.frontmatter.type)
+  if (type)
+    head.push(['meta', { property: 'og:type', content: type }])
 
-  if (pageData.frontmatter.customMetaTitle) {
+  if (customTitle) {
     head.push([
       'meta',
       {
         property: 'og:title',
-        content: pageData.frontmatter.customMetaTitle,
+        content: title,
       },
     ])
     head.push([
       'meta',
       {
         name: 'twitter:title',
-        content: pageData.frontmatter.customMetaTitle,
+        content: title,
       },
     ])
     head.push(['meta', { property: 'og:site_name', content: '' }])
   }
   else {
-    head.push(['meta', { property: 'og:title', content: pageData.frontmatter.title }])
-    head.push(['meta', { name: 'twitter:title', content: pageData.frontmatter.title }])
+    head.push(['meta', { property: 'og:title', content: title }])
+    head.push(['meta', { name: 'twitter:title', content: title }])
   }
   if (pageData.frontmatter.description) {
     head.push([
@@ -96,15 +102,16 @@ function generateMeta(context: TransformContext, hostname: string) {
   //   head.push(['meta', { name: 'twitter:image:height', content: '628' }])
   //   head.push(['meta', { name: 'twitter:image:alt', content: pageData.frontmatter.title }])
   // }
-  if (pageData.frontmatter.tag)
-    head.push(['meta', { property: 'article:tag', content: pageData.frontmatter.tag }])
+  const tag = stringValue(pageData.frontmatter.tag)
+  if (tag)
+    head.push(['meta', { property: 'article:tag', content: tag }])
 
   if (pageData.frontmatter.date) {
     head.push([
       'meta',
       {
         property: 'article:published_time',
-        content: pageData.frontmatter.date,
+        content: String(pageData.frontmatter.date),
       },
     ])
   }

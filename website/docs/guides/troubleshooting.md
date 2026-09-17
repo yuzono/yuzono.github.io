@@ -17,7 +17,7 @@ Encountering problems while trying to install or update extensions? Follow these
 
 1. Try restarting the app. There is a known bug where the app doesn't recognize newly-updated
 extensions.
-2. If the first step doesn't work, install [Split APK Installer](https://play.google.com/store/apps/details?id=com.aefyr.sai) from the Google Play Store and install your `.apk` from there.
+2. If the first step doesn't work, install [Split APK Installer](https://github.com/Aefyr/SAI/releases) from their GitHub Releases page and install your `.apk` using it.
 
 **Split APK Installer** helps show better error messages or may even successfully install your `.apk` without issue. Common errors include:
 
@@ -83,7 +83,7 @@ Newer Android users can check/change WebView in [Developer Options](https://deve
 :::
 
 ::: warning Caution with Non-Standard WebView
-Using non-standard WebView might cause **Tachiyomi** to malfunction or crash.
+Using non-standard WebView might cause **Mihon** to malfunction or crash.
 
 It's best to use the standard [Android System WebView](https://play.google.com/store/apps/details?id=com.google.android.webview) or [Google Chrome](https://play.google.com/store/apps/details?id=com.android.chrome).
 :::
@@ -91,7 +91,7 @@ It's best to use the standard [Android System WebView](https://play.google.com/s
 ## Cloudflare
 
 **Cloudflare**, an anti-bot mechanism, is used by some sources.
-Some sources intentionally have higher **Cloudflare** protection to deter apps like **Tachiyomi**.
+Some sources intentionally have higher **Cloudflare** protection to deter apps like **Mihon**.
 
 ### Dealing with Cloudflare looping
 Certain sources may employ more advanced **Cloudflare** protection, leading to WebView continuously reloading when bypassing using the above solution.
