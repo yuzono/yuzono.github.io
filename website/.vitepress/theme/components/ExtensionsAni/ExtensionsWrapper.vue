@@ -28,6 +28,7 @@ export interface SourceRow {
 	apkUrl: string
 	versionName: string
 	contentWarning: ContentWarning
+	isTorrent: boolean
 }
 
 export interface SourceGroupData {
@@ -56,6 +57,7 @@ const { data: groups, isLoading } = useExtensionsRepositoryQuery({
 					apkUrl: ext.resources.apkUrl,
 					versionName: ext.versionName,
 					contentWarning: ext.contentWarning,
+					isTorrent: ext.isTorrent === true,
 				}
 
 				if (!groupsMap.has(lang)) {

@@ -5,12 +5,26 @@ import type { UseQueryOptions } from '@tanstack/vue-query'
 import { useQuery } from '@tanstack/vue-query'
 import axios from 'axios'
 import { GITHUB_EXTENSION_JSON_ANI } from '../../config/constants'
-import type { Extension, Index } from './useExtensionsRepositoryQuery'
+import type { Extension as BaseExtension, Index as BaseIndex } from './useExtensionsRepositoryQuery'
 
 // The anime repository publishes `index.json` in the same store format as the
-// manga repository, so the shared types are reused here.
-export type { Index, Contact, ExtensionList, Extension, Resources, Source } from './useExtensionsRepositoryQuery'
+// manga repository, so the shared types are reused here, plus the anime-only
+// fields.
+export type { Contact, Resources, Source } from './useExtensionsRepositoryQuery'
 export { ContentWarning } from './useExtensionsRepositoryQuery'
+
+export interface Extension extends BaseExtension {
+  // Only present (as `true`) on extensions that stream through torrents.
+  isTorrent?: boolean
+}
+
+export interface ExtensionList {
+  extensions: Extension[]
+}
+
+export interface Index extends Omit<BaseIndex, 'extensionList'> {
+  extensionList: ExtensionList
+}
 
 type UseExtensionsRepositoryQueryOptions<S = Extension[]> =
   UseQueryOptions<Extension[], Error, S>

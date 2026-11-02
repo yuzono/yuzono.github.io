@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import VLazyImage from 'v-lazy-image';
+import { IconMagnet } from '@iconify-prerendered/vue-mdi';
 import { computed } from 'vue';
 import type { SourceRow } from './ExtensionsWrapper.vue';
 import { ContentWarning } from '../../queries/useExtensionsRepositoryQueryAni';
@@ -44,6 +45,15 @@ function handleAnalytics(apkUrl: string) {
         {{ pkgId }}
       </div>
     </div>
+    <span
+      v-if="item.isTorrent"
+      class="extension-torrent"
+      role="img"
+      aria-label="Torrent"
+      title="This extension streams through torrents."
+    >
+      <IconMagnet />
+    </span>
     <Badge :type="warning.type" :text="`${warning.label} · ${item.versionName}`" :title="warning.title" />
     <a
       :href="item.apkUrl"
@@ -131,6 +141,15 @@ function handleAnalytics(apkUrl: string) {
   .VPBadge {
     flex-shrink: 0
     white-space: nowrap
+  }
+
+  .extension-torrent {
+    display: inline-flex
+    flex-shrink: 0
+    color: var(--vp-c-text-2)
+    font-size: 1.25em
+    // Keep the magnet snug against the content badge.
+    margin-right: -0.25rem
   }
 
   .extension-download {
