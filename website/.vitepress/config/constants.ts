@@ -16,3 +16,5 @@ export const GITHUB_EXTENSION_BASE_ANI = `https://raw.githubusercontent.com/${GI
 export const GITHUB_EXTENSION_JSON_ANI = `${GITHUB_EXTENSION_BASE_ANI}/index.json`;
 export const GITHUB_EXTENSION_MIN_JSON_ANI = `${GITHUB_EXTENSION_BASE_ANI}/index.min.json`;
 export const JSDELIVR_EXTENSION_MIN_JSON_ANI = `https://cdn.jsdelivr.net/gh/${GITHUB_EXTENSION_REPO_ANI}@repo/index.min.json`
+// Hosts the anime index may point APK downloads at; any other URL gets no download link.
+export const EXTENSION_DOWNLOAD_HOSTS_ANI = ['raw.githubusercontent.com', 'cdn.jsdelivr.net'];
