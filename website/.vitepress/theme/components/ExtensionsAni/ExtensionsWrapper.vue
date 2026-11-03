@@ -8,7 +8,7 @@ import { ElLoading } from "element-plus";
 
 import { nextTick, onMounted, reactive, ref, watch, computed } from "vue";
 import { simpleLangName } from "../../utils/languages";
-import { EXTENSION_DOWNLOAD_HOSTS_ANI } from "../../../config/constants";
+import { allowedDownloadUrl } from "../../utils/urls";
 import useExtensionsRepositoryQuery from "../../queries/useExtensionsRepositoryQueryAni";
 import { ContentWarning } from "../../queries/useExtensionsRepositoryQueryAni";
 import ExtensionFilters from "./ExtensionFilters.vue";
@@ -35,21 +35,6 @@ export interface SourceRow {
 export interface SourceGroupData {
 	lang: string
 	items: SourceRow[]
-}
-
-// Only https URLs on the repository's download hosts are rendered as links:
-// anything else (e.g. a `javascript:` URL) could run in this site's origin or
-// send visitors to an unexpected download when clicked.
-function allowedDownloadUrl(url: string | undefined) {
-	try {
-		const parsed = new URL(url ?? "")
-		return parsed.protocol === "https:" && EXTENSION_DOWNLOAD_HOSTS_ANI.includes(parsed.hostname)
-			? parsed.href
-			: ""
-	}
-	catch {
-		return ""
-	}
 }
 
 const { data: groups, isLoading, isError, error } = useExtensionsRepositoryQuery({
