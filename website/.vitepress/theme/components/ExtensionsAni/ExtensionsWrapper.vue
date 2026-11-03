@@ -9,7 +9,6 @@ import { ElLoading } from "element-plus";
 import { nextTick, onMounted, reactive, ref, watch, computed } from "vue";
 import { simpleLangName } from "../../utils/languages";
 import { allowedDownloadUrl } from "../../utils/urls";
-import { EXTENSION_DOWNLOAD_HOSTS_ANI } from "../../../config/constants";
 import useExtensionsRepositoryQuery from "../../queries/useExtensionsRepositoryQueryAni";
 import { ContentWarning } from "../../queries/useExtensionsRepositoryQueryAni";
 import ExtensionFilters from "./ExtensionFilters.vue";
@@ -56,7 +55,7 @@ const { data: groups, isLoading, isError, error } = useExtensionsRepositoryQuery
 					extName: ext.name,
 					packageName: ext.packageName,
 					iconUrl: ext.resources.iconUrl,
-					apkUrl: allowedDownloadUrl(ext.resources.apkUrl, EXTENSION_DOWNLOAD_HOSTS_ANI),
+					apkUrl: allowedDownloadUrl(ext.resources.apkUrl),
 					versionName: ext.versionName,
 					contentWarning: ext.contentWarning,
 					isTorrent: ext.isTorrent === true,
