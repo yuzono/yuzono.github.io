@@ -63,8 +63,15 @@ export default function useExtensionsRepositoryQuery<S = Extension[]>(options: U
     queryKey: ['extensions'],
     queryFn: async () => {
       const { data } = await axios.get<Index>(GITHUB_EXTENSION_JSON)
+      const extensions = data?.extensionList?.extensions
 
-      return data.extensionList?.extensions ?? []
+      // Fail loudly on an unexpected index shape (e.g. a repository format
+      // change) instead of rendering it as an empty repository.
+      if (!Array.isArray(extensions)) {
+        throw new TypeError('Unexpected manga repository index format.')
+      }
+
+      return extensions
     },
     initialData: () => [],
     refetchOnWindowFocus: false,
