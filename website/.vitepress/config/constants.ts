@@ -5,6 +5,10 @@ export const GITHUB_EXTENSION_BASE = `https://raw.githubusercontent.com/${GITHUB
 export const GITHUB_EXTENSION_JSON = `${GITHUB_EXTENSION_BASE}/index.json`;
 export const GITHUB_EXTENSION_PB = `https://github.com/${GITHUB_EXTENSION_REPO}/raw/repo/index.pb`;
 export const JSDELIVR_EXTENSION_PB = `https://cdn.jsdelivr.net/gh/${GITHUB_EXTENSION_REPO}@repo/index.pb`
+// Hosts the extension index may point APK downloads at; any other URL gets no
+// download link. APKs are GitHub release assets (github.com); the repository
+// branch is also served from raw.githubusercontent.com and cdn.jsdelivr.net.
+export const EXTENSION_DOWNLOAD_HOSTS: readonly string[] = ['github.com', 'raw.githubusercontent.com', 'cdn.jsdelivr.net'];
 
 export const MIHON_REPO = 'mihonapp/mihon';
 export const MIHON_RELEASES_API = `https://api.github.com/repos/${MIHON_REPO}/releases/latest`;
@@ -16,8 +20,3 @@ export const GITHUB_EXTENSION_BASE_ANI = `https://raw.githubusercontent.com/${GI
 export const GITHUB_EXTENSION_JSON_ANI = `${GITHUB_EXTENSION_BASE_ANI}/index.json`;
 export const GITHUB_EXTENSION_MIN_JSON_ANI = `${GITHUB_EXTENSION_BASE_ANI}/index.min.json`;
 export const JSDELIVR_EXTENSION_MIN_JSON_ANI = `https://cdn.jsdelivr.net/gh/${GITHUB_EXTENSION_REPO_ANI}@repo/index.min.json`
-
-// Hosts the manga and anime indexes may point APK downloads at; any other URL
-// gets no download link. Manga APKs are GitHub release assets (github.com),
-// anime APKs are served from the repository branch (jsDelivr / raw GitHub).
-export const EXTENSION_DOWNLOAD_HOSTS: readonly string[] = ['github.com', 'raw.githubusercontent.com', 'cdn.jsdelivr.net'];

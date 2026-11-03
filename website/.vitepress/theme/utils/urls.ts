@@ -4,8 +4,8 @@ import { EXTENSION_DOWNLOAD_HOSTS } from '../../config/constants'
 
 /**
  * Returns `url` (normalized) when it is an https URL whose host is exactly one
- * of the shared extension download hosts, and "" otherwise. Repository indexes
- * are remote data: rendering any other URL as a link could run script in this
+ * of the extension download hosts, and "" otherwise. The extension index is
+ * remote data: rendering any other URL as a link could run script in this
  * site's origin (e.g. a `javascript:` URL) or send visitors to an unexpected
  * download.
  */

@@ -66,9 +66,9 @@ export default function useExtensionsRepositoryQuery<S = Extension[]>(options: U
       const extensions = data?.extensionList?.extensions
 
       // Fail loudly on an unexpected index shape (e.g. a repository format
-      // change) instead of rendering it as an empty repository.
+      // change) instead of rendering it as an empty list.
       if (!Array.isArray(extensions)) {
-        throw new TypeError('Unexpected manga repository index format.')
+        throw new TypeError('Unexpected extension index format.')
       }
 
       return extensions
