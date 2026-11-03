@@ -36,7 +36,19 @@ export interface SourceGroupData {
 	items: SourceRow[]
 }
 
-const { data: groups, isLoading } = useExtensionsRepositoryQuery({
+// Only absolute https URLs from the index are rendered as links: anything else
+// (e.g. a `javascript:` URL) would run in this site's origin when clicked.
+function httpsUrlOrEmpty(url: string | undefined) {
+	try {
+		const parsed = new URL(url ?? "")
+		return parsed.protocol === "https:" ? parsed.href : ""
+	}
+	catch {
+		return ""
+	}
+}
+
+const { data: groups, isLoading, isError, error } = useExtensionsRepositoryQuery({
 	select: (response) => {
 		const groupsMap = new Map<string, SourceRow[]>()
 
@@ -54,7 +66,7 @@ const { data: groups, isLoading } = useExtensionsRepositoryQuery({
 					extName: ext.name,
 					packageName: ext.packageName,
 					iconUrl: ext.resources.iconUrl,
-					apkUrl: ext.resources.apkUrl,
+					apkUrl: httpsUrlOrEmpty(ext.resources.apkUrl),
 					versionName: ext.versionName,
 					contentWarning: ext.contentWarning,
 					isTorrent: ext.isTorrent === true,
@@ -176,6 +188,15 @@ watch([isLoading, loadingInstance], async ([newIsLoading]) => {
 		:groups="groups ?? []"
 	/>
 	<div class="extensions">
+		<div v-if="isError" class="extensions-error custom-block danger">
+			<p class="custom-block-title">
+				Couldn't load the extension list
+			</p>
+			<p>
+				Please try again later.
+				<code v-if="error">{{ error.message }}</code>
+			</p>
+		</div>
 		<ExtensionList v-if="!isLoading" :groups="filteredGroups" />
 	</div>
 </template>
